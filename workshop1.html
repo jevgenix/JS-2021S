@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Demo webPage for JS-learning</h1>
+    <br>
+    <p id="ika"></p>
+    <p id ="luku"> </p>
+    <p id="firstQuestion"></p>
+    <p id="secondQuestion"></p>
+    <p id ="thirdQuestion"></p>
+    <p id="guy"></p>
+    <P id="autot"></P>
+    
+
+    <script> 
+    
+    var ika = prompt("Mikä ikäsi on?");
+    var order = "Beer";
+    
+    if (ika < 18) {
+        document.getElementById("ika").innerHTML = 
+        "<h1>Olet alaikäinen, et saa juoda kaljaa.</h1>"
+        console.log("Valitettavasti joudut odottaa kunnes täytät 18 :C");
+    } else if (ika >= 18 && ika < 21) {
+        document.getElementById("ika").innerHTML = 
+        "<strong>Olet täysi-ikäinen, mutta et voi juua vahvoja juomia.</strong>";
+        console.log("Et voi edelleen tilata vahvoja juomia :)");
+    } else {
+        document.getElementById("ika").innerHTML = 
+        "<h1>Voit tilata kaikki juomat.</h1>";
+        console.log("Hurraa bileet! :D");
+    }
+
+    var arr = [];
+    for (var i=0; i < 3; i++) {
+        arr.push( Math.random() * 100) + 1;
+        document.getElementById("luku").innerHTML = 
+        "<br>this number is " + "<del>" + arr + "</del>";
+        
+    }
+
+    function areYouOldEnough(ika) {
+        if (ika < 18) {
+            alert("Olet alaikäinen!");
+            return false;
+            
+        } else {
+            alert("Olet täysiikäinen!");
+            return true; 
+        }
+    }    
+    console.log(areYouOldEnough(ika));
+    
+    const person = {
+        firstName: "John",
+        secondName: "Doe",
+        age: 23,
+        eyeColor:"blue",
+        fullInfo : function() {
+        return "So, your name is " + this.firstName + " " + this.secondName + 
+        " you are " + this.age + "-year-old, and you've got a " + this.eyeColor + " colored eyes =)"; 
+        }
+    };
+    
+    
+    "<br><br>";
+    document.getElementById("firstQuestion").innerHTML = 
+    "What is your name? <br>" + "My name is " + person.secondName + ", " +
+    person.firstName + " " + person.secondName;
+
+    document.getElementById("secondQuestion").innerHTML = 
+    "<br>how old are you? <br>" + "I am " + person.age + "-year-old";
+    
+    document.getElementById("thirdQuestion").innerHTML = 
+    "<br>and what is your eye color?<br>" + "It is " + person.eyeColor + " :) <br>";
+
+   
+    document.getElementById("guy").innerHTML = person.fullInfo();
+    console.log(person.fullInfo());
+    
+    const autot = [
+        "Saab",
+        "Volvo",
+        "BMW"
+    ];
+
+    document.getElementById("autot").innerHTML = autot[0] + " ja " + autot[2] + " on ihan jees :DDD";
+
+    
+
+    </script>
+
+</body>
+</html>
