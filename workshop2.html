@@ -10,16 +10,61 @@
 			}
 		</style>
 		<script>
-			<!-- JavaScript goes here -->
+		//	<!-- JavaScript goes here --> Solutions:
+		// Excercise 1:
+			document.write("<em><strong>\"If I had nine hours to chop down a tree, I'd spend the first six sharpening my ax.\"</strong> <br /> -- Abraham Lincoln</em></p>");
+
+		// Excercise 2:
+			var funk = repeatingText();
+			function repeatingText() {
+				return "Moikka kaikki! ";
+			}
+			var x = 0;
+			while (x <= 50) {
+				document.write(repeatingText());
+				x++;
+			}
+			// or potentially u can do like dis :)
+			for (let i = 1; i <= 50; i++) {
+				console.log(repeatingText());
+			}
+
+		// Excercise 3: 
+			 if (navigator.appCodeName = "Mozilla") {
+				window.open("http://mozilla.org");
+			} else 
+				window.open("http://www.microsoft.com");
+
+		// Excercise 4:		
+			if (confirm("Are you student?") == true) {
+				document.write("<h1>Wellcome back, dear student!</h1>");
+			} else {
+				alert("This page is for students only!");
+			}
+		
+		// Excercise 5:
+		var images =[
+		"http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", 
+		"http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", 
+		"http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg"
+		];
+		var number = Math.round (Math.random() * 2); 
+		// document.write("<img src = http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg>")
+		document.write("<img src =" + images[number]);
+		
+		
+			
 		</script>
 </head>
 
-
+<body>
+	
 <p>Workshop 2</p>
 <div>
 <h1>Workshop 2: JavaScript BOM and Events&nbsp; </h1>
 <h2>Save your page with solutions to Github.</h2>
 </div>
+
 <div><hr /></div>
 <div>
 <p>In this exercise we will practice the use of BOM and the JavaScript events. Use the lecture-material as a reference guide side by side these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use.</p>
@@ -28,34 +73,58 @@
 <h2>Exercise 1</h2>
 </div>
 <div>
-<p>Add JavaScript commands in the script-tag of this page, which will write the following text on the browser page. Use HTML-tags when writing the output to produce the text styles to the page. <br /> <br /> <em><strong>"If I had nine hours to chop down a tree, I'd spend the first six sharpening my ax."</strong> <br /> -- Abraham Lincoln</em></p>
+<p>		Add JavaScript commands in the script-tag of this page, which will write the following text on the browser page.
+	 	Use HTML-tags when writing the output to produce the text styles to the page. <br /> 
+	 	<br /> <em><strong>"If I had nine hours to chop down a tree, I'd spend the first six sharpening my ax."</strong> <br /> -- Abraham Lincoln</em></p>
 </div>
 <div>
-<h2>Exercise 2</h2>
+
+	<h2>Exercise 2</h2>
+
 </div>
+
 <div>
-<p>Write a JavaScript function called repeatingText(). It writes out a line of text to the page for 50 times. (HINT: use loops). How do you make browser run the function?</p>
+
+	<p>Write a JavaScript function called repeatingText(). 
+		It writes out a line of text to the page for 50 times. (HINT: use loops). How do you make browser run the function?</p>
+
 </div>
+
 <div>
 <h2>Exercise 3</h2>
 </div>
 <div>
-<p>Create a JavaScript if-statement, which checks if the user is using Mozilla/Firefox browser. If it is, the browser should load http://mozilla.org. Otherwise go to http://www.microsoft.com" page. Test the code.</p>
+
+<p> Create a JavaScript if-statement, which checks if the user is using Mozilla/Firefox browser. 
+	If it is, the browser should load http://mozilla.org. 
+	Otherwise go to http://www.microsoft.com" page. Test the code.</p>
+
 </div>
 <div>
 <h2>Exercise 4</h2>
 </div>
 <div>
-<p>Create a simple web page, where JavaScript confirm-dialog will pop out asking if the user is a student or not. If the user clicks OK write "Welcome student" to the page. If the user clicks cancel, write on the page: "Sorry, this page is for students only". HINT: Confirm(); return true if the user click OK and false if cancel was clicked.</p>
+
+	<p>Create a simple web page, where JavaScript confirm-dialog will pop out asking if the user is a student or not. 
+	If the user clicks OK write "Welcome student" to the page. 
+	If the user clicks cancel, write on the page: "Sorry, this page is for students only". 
+	HINT: Confirm(); return true if the user click OK and false if cancel was clicked.</p>
+
 </div>
 <div>
 <h2>Exercise 5</h2>
 </div>
-<p>Use document.write to output an image tag with an image to the page (demo shown in the class). When you're done, try writing a JavaScript function to display a random image from the following list of images.</p>
+
+	<p>	Use document.write to output an image tag with an image to the page (demo shown in the class). 
+		When you're done, try writing a JavaScript function to display a random image from the following list of images.</p>
+
 <div>
-<p>HINT: You can access individual images using the table index. Images[0] for example contains the url: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg".</p>
-<p>HINT 2: Random number between 0-2 can be created using var number = Math.round ( Math.random() * 2 )</p>
-<pre>var images =[
+
+	<p>HINT: You can access individual images using the table index. Images[0] for example contains the url: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg".</p>
+
+	<p>HINT 2: Random number between 0-2 can be created using var number = Math.round ( Math.random() * 2 )</p>
+
+	<pre>var images =[
 "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", 
 "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", 
 "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg"
