@@ -17,6 +17,94 @@
     
     </style>
     
+    <script>
+    
+      //JavaScript goes here 
+      
+      // button 1 values:
+      // creating "date" values, and optimising date values
+      var date = new Date();
+      var day = date.getDay();
+      var month = date.getMonth();
+      var year = date.getFullYear();
+      current_date = day + "/" + month + "/" +year;
+      // creating the function called first(), which we will call in buttom onclick=""
+      function first() {
+        alert ("You clicked me! " + "Today is: " + current_date); //adding alert signal, and current_date value.
+      }
+
+
+      // button 2 
+      // creating showTable function and copying table html code inside table variable, important to use this: `` quotes!
+      function showTable() {
+      var table = `
+        <table id="example" class="display" cellspacing="5" border = "1" width="100%" >
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>$320,800</td>
+                </tr>
+                <tr>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>$170,750</td>
+                </tr>
+                <tr>
+                    <td>Ashton Cox</td>
+                    <td>Junior Technical Author</td>
+                    <td>$86,000</td>
+                </tr>
+                <tr>
+                    <td>Cedric Kelly</td>
+                    <td>Senior Javascript Developer</td>
+                    <td>$433,060</td>
+                </tr>
+                <tr>
+                    <td>Airi Satou</td>
+                    <td>Accountant</td>
+                    <td>$162,700</td>
+                </tr>
+    
+            </tbody>
+        </table>
+    `;
+    // outputing var table values!
+    document.write(table);
+      }
+
+
+      // button 3 values: 
+
+      // table values in function showSecondTable:
+      function showSecondTable() {
+        var persons = [ "Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+                        "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+                        "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+                        "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria"
+        ];
+      // creating table itself in this function, so the button onclick value could call this function
+      
+      document.write('<table border="1"><tr>');
+      for (var i = 0; i < persons.length; i++) {
+        if (i % 3 == 0) {
+          document.write('</tr><tr>')  // this will divide rows with 3 value, each row will contain max 3 values.
+        }                              // now we need to output values in rows
+          document.write('<td>' + persons[i] + '</td>');
+      }                               
+          document.write("</table>");  // loop ends, and we have to close the table
+      }                                // function showTable closes
+
+    </script>
     
     <h1>Workshop 3: JavaScript Events</h1>
     <hr />
@@ -27,10 +115,9 @@
     <h2>Exercise 1</h2>
     <p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons.</p>
     <p>
-      <button id="eka">Button 1</button>
-      <p id="ekaDate"></p>
-      <button id="toka">Button 2</button>
-      <button id="kolmas">Button 3</button>
+      <button onclick="first();">Button 1</button>
+      <button onclick="showTable();">Button 2</button>
+      <button onclick="showSecondTable();">Button 3</button>
     </p>
     
     <ul>
@@ -95,34 +182,14 @@
     
       <li>Button 3 should print out an HTML table (Name, Addrees, Country) using data from the following JavaScript array. HINT: Use looping to go through the array and print 
     the data surrounded by HTML-tags to create the table.  </li>
-    <xmp>
-    var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
-               "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
-               "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
-               "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria"
-    ];
-    
-    
-    </xmp>
-    </ul>
-    <script>
-    
-        //JavaScript goes here 
-        var pmv = new Date();
-        var x = document.getElementById("eka");
-        var y = document.getElementById("ekaDate");
-        x.addEventListener("click", first);
-        
-        function first() {
-            alert ("You clicked me!");
-            y.innerHTML=Date();
-            
-        }
 
-            
-    
-    
-        </script>
-    
+      <xmp>
+      var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+                     "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+                     "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+                     "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria"
+        ];
+      </xmp>
+    </ul>
     </html>
     
