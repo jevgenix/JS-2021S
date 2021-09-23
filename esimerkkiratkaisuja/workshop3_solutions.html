@@ -18,12 +18,6 @@ table, tr, td{
 </style>
 <script>
 
-<!-- JavaScript goes here -->
-
-// This counter is used to keep in track of the keypresses
-// It has to be declared here, so that it doesnt get reset on every keypress
-var counter= 0;
-
 // Displays a date with custom format on the screen
 function showDate(){
 
@@ -81,27 +75,7 @@ document.getElementById('counter').innerHTML = counter;
 
 }
 
-function attention(){
-// Find the element with an id "textbox" on the page
-var textbox = document.getElementById('textdata');
 
-// Change the contents
-textbox.value='Please fill in with proper data!'
-
-// Change the background to red
-textbox.style ="background: red";
-}
-
-function validate(){
-
-var textbox = document.getElementById('textdata');
-// If the field is empty
-if (textbox.value == ''){
-	alert("Field is empty!");
-	return false;
-	}
-		
-}
 
 function showXY(event){
 
@@ -209,6 +183,35 @@ We can cancel the submission of a form  by using "return validate()" on the even
   <h3 id="counter"></h3>
     <button>Send me</button>
 </form>
+
+<!-- Javascript here -->
+<script>
+
+  function attention(){
+  // Find the element with an id "textbox" on the page
+  var textbox = document.getElementById('textdata');
+  // Change the contents
+  textbox.value='Please fill in with proper data!'
+  // Change the background to red
+  textbox.style ="background: red";
+  }
+
+  // This counter is used to keep in track of the keypresses
+  // It has to be declared here, so that it doesnt get reset on every keypress
+  var counter= 0;
+
+  function validate(){
+
+    var textbox = document.getElementById('textdata');
+    // If the field is empty
+    if (textbox.value == ''){
+	  alert("Field is empty!");
+	  return false;
+	  }		
+  }
+
+</script>
+
 
 <h2>Exercise 4</h2>
 
