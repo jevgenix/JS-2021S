@@ -1,0 +1,129 @@
+<HTML>
+<style>
+  body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #333333;
+  }
+
+  div {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+  }
+
+  table,
+  tr,
+  td {
+    border: 1px solid gray;
+    width: 50%;
+  }
+</style>
+
+<!-- Javascript code-->
+
+
+
+<!-- html code starts here -->
+
+<h1>Workshop 3: JavaScript Events</h1>
+<hr />
+
+<h2 id="header">Exercise 2</h2>
+
+<!-- little script for h2 -->
+
+<script>
+
+  // making value header as variable, save time, don't write same code more than 1 time :)
+  var x = document.getElementById("header");
+
+  // adding eventlisteners mouseover and mouseout, using functions to output values
+  x.addEventListener("mouseover", myFunction);
+  x.addEventListener("mouseout", mySecondFunction);
+
+  // function for: "Stepped over my a mouse!" 
+  function myFunction() {
+    console.log("Stepped over my a mouse!");
+  }
+  // function for: "Bye bye mouse!"
+  function mySecondFunction() {
+    // alert("Bye bye mouse!");  don't like how it works, so thats why used console.log over alert :D
+    console.log("Bye bye mouse!");
+  }
+
+</script>
+
+<!-- html code continues here -->
+
+
+<ul>
+  <li>Add an&nbsp;onMouseOver event on the&nbsp;Heading "Exercise 2" of this page.&nbsp;It should&nbsp;fire when the
+    users mouse is moved
+    over&nbsp;it. Output "Stepped over my a mouse!" on the console.</li>
+  <li>Add another event, which will fire then the mouse leaves the Exercise 2 -heading. This time show an alert window
+    to the user saying: "Bye bye mouse!"</li>
+</ul>
+<h2>Exercise 3</h2>
+<p>Below you will see a simple form.</p>
+
+<ul>
+  <li>Add onfocus -event to the&nbsp;textarea below. When the user enters the textarea, it should show a text saying:
+    "Please fill in the form with proper data.". You can try
+    modifying the background color of the box as well. &nbsp;
+  </li>
+  <li>Try to use onkeydown -event on the textarea. It should calculate the number of keypresses and output them on the
+    screen. Could you think other smart ways to use it?
+  </li>
+  <li>When the form button is clicked, check if the textarea is empty. Notify the user with appropriate message. HINT:
+    You can access the Textarea using the following
+    command: <i>document.getElementById("textdata").value</i>. We will study the forms deeper in Workshops 4 and 5.</li>
+</ul>
+
+<form onsubmit="return validate(this);">
+  <textarea onkeydown="count();" onfocus="wow();" id="textdata"></textarea><br>
+  <h3 id="counter"></h3>
+  <button>Send me</button>
+</form>
+
+<script>
+  // counter for keypress
+  var counter = 0;
+  // count function which we should integrate into <p> or <h..> value
+  function count() {
+
+    // Increase the number on keypresses
+    counter++;
+    // Find an element with an id "counter" and place the variable there
+    document.getElementById('counter').innerHTML = counter;
+  }
+
+  function wow() {
+    // Find the element with an id "textbox" on the page
+    var textbox = document.getElementById('textdata');
+
+    // content value
+    textbox.value = 'Please fill in with proper value!'
+    textbox.style = 'background: yellow'
+  }
+
+  function validate() {
+
+    var textbox = document.getElementById('textdata');
+    // If the field is empty
+    if (textbox.value == '') {
+      alert("Field is empty!");
+      return false;
+    }
+  }
+
+</script>
+
+<h2>Exercise 4</h2>
+So far you have hardcoded the events into HTML tags. Make a copy of your exercise file and try to add the events
+dynamically, without touching the HTML at all. This can be
+achieved using addEventListener() -function, <a target="_blank"
+  href="https://www.w3schools.com/js/js_htmldom_eventlistener.asp"> see more here</a>.
+
+
+
+</html>

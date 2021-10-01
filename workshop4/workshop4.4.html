@@ -1,0 +1,53 @@
+<HTML>
+    <style>
+    body {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        color: #333333;
+    }
+    
+    div {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+    }
+    table, tr, td{
+      border: 1px solid gray;
+      width: 50%;
+    }
+    img {
+        position: relative;
+        left:0px;
+        opacity: 1;
+    }
+    
+    </style>
+        
+    <script>
+    document.write(1.22 * prompt( "How many euros you want to convert", "" ) );
+    
+    var x = 15;
+    console.log(x);
+    
+    </script>
+
+    
+    <h1>Workshop 4: DOM Scripting</h1>
+    <hr />
+    <p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the lecture-material as a reference guide side by side these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use. </p>
+    
+    <h2>Exercise 4: Moving things around</h2>
+    <ul>
+      <li>
+        <p class="surprise">You can do neat things by editing CSS-rules via  JavaScript. See the examples in lecture slides. Then try these:</p>
+        <ol>
+          <li><button onclick="changePosition()">Move!</button>Select the div with an id &quot;carimage&quot; and move it 200px left and 500px down</li>
+          <li><button onclick="setInterval(function(){doMove();},1000); "/>Animate</button> Write a  funtion doMove() which  will move the image across the screen, or even better: back and forth on  the screen. The Interval required has already been added to the onclick -event of the list item.</li>
+          <li><button onclick="setInterval(function(){fadeOut();},250);"/>Fade out!</button> Wite  a function fadeOut() which will slowly decrease the opacity of the image from 1.0 to  0 making it fade out. The Interval required has already been added to the onclick -event of the list item</li>
+          <li><button onclick="hide()"/>Disappear! </button>Finally, write JavaScript which will remove the image from the page</li>
+        </ol>
+      </li>
+    </ul>
+    </html>
+    
+    
+    

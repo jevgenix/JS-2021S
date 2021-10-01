@@ -1,0 +1,107 @@
+<HTML>
+<style>
+    body {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        color: #333333;
+    }
+
+    div {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+    }
+
+    table,
+    tr,
+    td {
+        border: 1px solid gray;
+        width: 50%;
+    }
+</style>
+<script>
+
+    //JavaScript goes here 
+
+    function myFunction() {
+        var x = event.clientX;
+        var y = event.clientY;
+        var coords = "X: " + x + " Y: " + y;
+        document.getElementById("coord").innerHTML = coords;
+        // console.log(coords);  
+    }
+
+</script>
+
+
+<h2>Exercise 5</h2>
+<h2 id="coord"></h2>
+<div onmousemove="myFunction();" id="coordinates">
+
+</div>
+
+<p>Add onMouseMove -event to the DIV-element above. When you move mouse over the DIV (rectangle) the program should
+    output the coordinates of your pointer. Try first
+    outputting to the console using console.log.
+<p>HINT. When the event occurs, call for a method showXY(event); Then in the actual method you can output data from the
+    mouse event using event.clientX and event.clientY variables. Study the event object in the console and what data you
+    can find in it.</p>
+<p> When the program is working, you can try outputting the text on the H2 element with an id "coords" the box</p> HINT:
+You need to use
+document.getElementById("coordinates").innerHTML to achieve this.
+
+
+
+<H2>Exercise 6</h2>
+<button onclick="getLocation();">Get location</button>
+<p id="demo" </p>
+    <button onclick="showLoc();">Show location</button>
+
+
+
+    <li>The first button should check <a href="https://www.w3schools.com/html/html5_geolocation.asp">Geolocation</a> of
+        the user, and output it to the console and to the
+        page. Note: Some browsers might not allow you to do this. Try different browsers if you get errors.</li>
+    <li>
+        The second button should show your location on a Google Maps. You can see the map with a spesific location using
+        the URL
+        "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false" where
+        latlon is your latitude + longitute data separated by
+        comma (,).
+    </li>
+
+    <script>
+
+        var l = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                l.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            console.log("Latitude: " + position.coords.latitude +
+                ", Longitude: " + position.coords.longitude);
+        }
+        // Apikey: AIzaSyBzPFcA-pJ3RT9SFPqv7pXNpB0oIRA-Gxo
+        function showLoc() {
+            var latlon = 60.27149799828668 + "," + 24.84599119972966;
+            var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false&key=AIzaSyBzPFcA-pJ3RT9SFPqv7pXNpB0oIRA-Gxo";
+        }
+        function addElement() {
+            // create a new div element
+            var newDiv = document.createElement("div");
+
+            // content
+
+        }
+
+    </script>
+
+
+
+    </body>
+
+</html>
