@@ -1,51 +1,87 @@
 <HTML>
-    <style>
-    body {
-        font-family: "Trebuchet MS", Helvetica, sans-serif;
-        color: #333333;
+<style>
+  body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #333333;
+  }
+
+  div {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+  }
+
+  table,
+  tr,
+  td {
+    border: 1px solid gray;
+    width: 50%;
+  }
+
+  img {
+    position: relative;
+    left: 0px;
+    opacity: 1;
+  }
+</style>
+
+<script>
+  function select() {
+    var x = document.getElementById("mySelect").value;
+    var text = document.getElementById("about_text");
+    var image = document.getElementById("carimage");
+
+    for (var i = 0; i < x.length; i++) {
+
+      if (x == "BMW") {
+        text.innerHTML = ("I dont like " + x)
+        image.src = "https://media.autokeskus.fi/pub/system/general-brand-page/img/bmw/models/bmw-i4.png?c=system_x1080";
+      } else if (x == "Audi") {
+        text.innerHTML = ("I have " + x + " and it is always broken...");
+        image.src = "https://mediaservice.audi.com/media/live/50900/fly1400x601n1/4ka/2022.png?wid=850";
+      } else if (x == "Mercedes") {
+        text.innerHTML = ("I like how this car looks inside, but never had a " + x);
+        image.src = "https://www.mercedes-benz.fi/passengercars/mercedes-benz-cars/models/a-class/hatchback-w177/design/design-exterior/_jcr_content/contentgallerycontainer/par/contentgallery_8e37/par/contentgallerytile_4/image.MQ6.8.20190430140656.jpeg";
+      } else {
+        text.innerHTML = (x + " på svenska, perkele! ");
+        image.src = "https://dsu2f16ugr2z8.cloudfront.net/1600x1200/autotalliprodmedia/images/netweels/Volvo/S60/2022/Volvo_380_29_202045152712.jpg";
+      }
     }
-    
-    div {
-        width: 200px;
-        height: 100px;
-        border: 1px solid black;
+  }
+
+  function showBorder() {
+      document.getElementById("carimage").style = "border: 2px solid black";
     }
-    table, tr, td{
-      border: 1px solid gray;
-      width: 50%;
+    function hideBorder() {
+      document.getElementById("carimage").style = "border: 0px solid black";
     }
-    img {
-        position: relative;
-        left:0px;
-        opacity: 1;
-    }
-    
-    </style>
-    <script>
-    
-    
-    
-    
-    </script>
-    
-    <h1>Workshop 4: DOM Scripting</h1>
-    <hr />
-    <p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the lecture-material as a reference guide side by side these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use. </p>
-      <h2>Exercise 3: Images and pulldowns</h2>
-    <li>Write a JavaScript function, which will fire when the pulldown menu item is changed. Show the users choice using alert -box.</li>
-    <li>When the mouse is moved on top of the image, a colored border should appear surrounding it. On mouse out, border should disappear</li>
-    <li>When you have accomplished the above, change the image (id=&quot;carimage&quot;) below based on the users choice on the pulldown menu below. Find appropriate images from the web.
-      <p>Select a new car from the list.</p>
-      <select name="mySelect" id="mySelect" onchange="">
-        <option value="BMW">BMW         
-        <option value="Audi">Audi
-        <option value="Mercedes">Mercedes
-        <option value="Volvo">Volvo
-      </select>
-      <br>
-      <br>
-    <img onmouseover="" onmouseout="" style="left: 0px; opacity: 1;" src="https://www.bmw.in/content/dam/bmw/common/all-models/3-series/sedan/2018/navigation/bmw-3-series-modellfinder.png" width="400" id="carimage"/></li>
-    </html>
-    
-    
-    
+</script>
+
+<h1>Workshop 4: DOM Scripting</h1>
+<hr />
+<p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the lecture-material as a reference
+  guide side by side these exercises. It might also be a good idea to save the lines of code you write during the
+  exercises for later use. </p>
+<h2>Exercise 3: Images and pulldowns</h2>
+<li>Write a JavaScript function, which will fire when the pulldown menu item is changed. Show the users choice using
+  alert -box.</li>
+<li>When the mouse is moved on top of the image, a colored border should appear surrounding it. On mouse out, border
+  should disappear</li>
+<li>When you have accomplished the above, change the image (id=&quot;carimage&quot;) below based on the users choice on
+  the pulldown menu below. Find appropriate images from the web.
+  <p>Select a new car from the list.</p>
+  <select name="mySelect" id="mySelect" onchange="select();">
+    <option value="BMW">BMW
+    <option value="Audi">Audi
+    <option value="Mercedes">Mercedes
+    <option value="Volvo">Volvo
+  </select>
+  <p id="about_text"></p>
+  <br>
+  <br>
+  <img onmouseover="showBorder()" onmouseout="hideBorder()" style="left: 0px; opacity: 1;"
+    src="https://www.bmw.in/content/dam/bmw/common/all-models/3-series/sedan/2018/navigation/bmw-3-series-modellfinder.png"
+    width="400" id="carimage" />
+</li>
+
+</html>
