@@ -27,6 +27,8 @@
 
 <script>
 
+  //  <!-- ENSIMMÄINEN TEHTÄVÄ -->
+
   // first btn
   function first_button() {
     var header = document.getElementsByTagName("h1")[0];
@@ -59,7 +61,7 @@
 
     var lorem = document.getElementsByTagName("em")[1];
     lorem.style.fontWeight = "bold";
-    
+
     var img = document.createElement("img");
     img.src = "https://image.shutterstock.com/image-vector/unique-fox-logo-simple-memorable-260nw-764798020.jpg";
     lorem.appendChild(img);
@@ -103,16 +105,16 @@
 <p class="surprise">Add onchange -events to following checkboxes.</p>
 <p>
   <label>
-    <input onchange="hide()" name="CheckboxGroup1" type="checkbox" id="CheckboxGroup1_0" title="Actions" value="1">
+    <input onchange="hide();" name="CheckboxGroup1" type="checkbox" id="CheckboxGroup1_0" title="Actions" value="1">
     Hide me </label>
   <br>
   <label>
-    <input onchange="show()" type="checkbox" name="CheckboxGroup1" value="2" id="CheckboxGroup1_1">
+    <input onchange="show();" type="checkbox" name="CheckboxGroup1" value="2" id="CheckboxGroup1_1">
     Show me</label>
   <br>
   <label>
-    <input type="checkbox" name="CheckboxGroup1" value="3" id="CheckboxGroup1_2">
-    <span id="surpise">Surprise</span>
+    <input onchange="surprise();" type="checkbox" name="CheckboxGroup1" value="3" id="CheckboxGroup1_2">
+    Surprise
   </label>
 </p>
 <ul>
@@ -123,4 +125,81 @@
 </ul>
 <p>&nbsp;</p>
 
+<br>
+<table id="data" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tfoot>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>$320,800</td>
+    </tr>
+    <tr>
+      <td>Garrett Winters</td>
+      <td>Accountant</td>
+      <td>$170,750</td>
+    </tr>
+    <tr>
+      <td>Ashton Cox</td>
+      <td>Junior Technical Author</td>
+      <td>$86,000</td>
+    </tr>
+    <tr>
+      <td>Cedric Kelly</td>
+      <td>Senior Javascript Developer</td>
+      <td>$433,060</td>
+    </tr>
+    <tr>
+      <td>Airi Satou</td>
+      <td>Accountant</td>
+      <td>$162,700</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  //<!-- TOINEN TEHTÄVÄ -->
+
+  // esimerkkiratkaisu 2:
+  // function hide() {
+  // document.getElementById("data").style = "display: none";
+  // }
+
+  function hide() {
+
+    var first = document.getElementById("data");
+    var checkbox_1 = document.getElementById("CheckboxGroup1_0");
+
+    if (checkbox_1.checked == true) {
+      first.style.display = "none";
+    } else {
+      first.style.display = "block";
+    }
+  }
+
+  // onchange 2. show();
+  function show() {
+    var first = document.getElementById("data");
+    first.style = "display: block";
+  }
+
+  // onchange 3. "surprise();"
+  function surprise() {
+    var surprise = document.getElementsByClassName("surprise")[0];
+    surprise.style.fontSize = "30px";
+    surprise.style.backgroundColor = "black";
+    surprise.style.color = "red";
+    surprise.style.fontWeight ="bold";
+    surprise.style.textAlign = "center";
+  }
+
+</script>
 </html>
