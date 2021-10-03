@@ -50,11 +50,46 @@
   }
 
   function showBorder() {
-      document.getElementById("carimage").style = "border: 2px solid black";
+    document.getElementById("carimage").style = "border: 2px solid black";
+  }
+  function hideBorder() {
+    document.getElementById("carimage").style = "border: 0px solid black";
+  }
+
+  // exercise 4: 
+  // 1st. button
+  function changePosition() {
+    var img = document.getElementById("carimage");
+    img.style.position = "relative";
+    img.style.top = "+500px";
+    img.style.right = "-200px";
+  }
+  // 2nd. button
+  function myMove() {
+    var id = null;
+    var img = document.getElementById("carimage");
+    var pos = 0;
+    clearInterval(id);
+    id = setInterval(frame, 2);
+    function frame() {
+      if (pos == 1350) {
+        clearInterval(id);
+      } else {
+        pos++;
+        img.style.left = pos + "px";
+      }
+
     }
-    function hideBorder() {
-      document.getElementById("carimage").style = "border: 0px solid black";
-    }
+  }
+  // 3rd. button
+  function fadeOut() {
+    var img = document.getElementById("carimage");
+    img.style.opacity -= 0.1;
+  }
+  function hide() {
+    document.getElementById("carimage").style.display="none";
+  }
+
 </script>
 
 <h1>Workshop 4: DOM Scripting</h1>
@@ -83,5 +118,29 @@
     src="https://www.bmw.in/content/dam/bmw/common/all-models/3-series/sedan/2018/navigation/bmw-3-series-modellfinder.png"
     width="400" id="carimage" />
 </li>
+<hr />
+<p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the lecture-material as a reference
+  guide side by side these exercises. It might also be a good idea to save the lines of code you write during the
+  exercises for later use. </p>
+
+<h2>Exercise 4: Moving things around</h2>
+<ul>
+  <li>
+    <p class="surprise">You can do neat things by editing CSS-rules via JavaScript. See the examples in lecture slides.
+      Then try these:</p>
+    <ol>
+      <li><button onclick="changePosition()">Move!</button>Select the div with an id &quot;carimage&quot; and move it
+        200px left and 500px down</li>
+      <li><button onclick="myMove();" />Animate</button> Write a funtion doMove() which will move the image across the
+        screen, or even better: back and forth on the screen. The Interval required has already been added to the
+        onclick -event of the list item.</li>
+      <li><button onclick="setInterval(function(){fadeOut();},250);" />Fade out!</button> Wite a function fadeOut()
+        which will slowly decrease the opacity of the image from 1.0 to 0 making it fade out. The Interval required has
+        already been added to the onclick -event of the list item</li>
+      <li><button onclick="hide()" />Disappear! </button>Finally, write JavaScript which will remove the image from the
+        page</li>
+    </ol>
+  </li>
+</ul>
 
 </html>
