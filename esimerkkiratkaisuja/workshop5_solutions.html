@@ -17,9 +17,9 @@ table, tr, td{
 
 </style>
 <script>
-<!-- Javascript goes here -->
+//<!-- Javascript goes here -->
 
-<!-- Exercise #1 A -->
+//<!-- Exercise #1 A -->
 function getData(){
 
 var f = document.forms[0];
@@ -29,11 +29,11 @@ var comment = f.comment.value;
 alert("Your email: "+email);
 alert("Your comment: "+comment);
 
-<!-- Exercise #1 B -->
+//<!-- Exercise #1 B -->
 
 if (email.length < 6 || email.length > 15){
 	alert("Input either too long/short");
-	<!-- Exercise #1 C -->
+//	<!-- Exercise #1 C -->
 	f.email.style.borderColor = "red";
 }
 
@@ -49,7 +49,7 @@ if (comment.length > 50) {
 	comment = comment.substring(0,50);
 }
 
-<!-- Exercise #1 C -->
+//<!-- Exercise #1 C -->
 
 return false;
 }
@@ -73,10 +73,10 @@ return false;
 <form onsubmit="return getData()">
 
 	Email address:<br>
-  <input type="text" name="email">
+  <input id="email" type="text" name="email">
   <br>
 	Comment:<br>
-  <textarea name="comment"></textarea>
+  <textarea id="comment" name="comment"></textarea>
 	<br>
 <input type="submit" value="Send">
 </form>
