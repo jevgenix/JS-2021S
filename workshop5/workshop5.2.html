@@ -1,0 +1,165 @@
+<HTML>
+<style>
+    body {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        color: #333333;
+    }
+
+    div {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+    }
+
+    table,
+    tr,
+    td {
+        border: 1px solid gray;
+        width: 50%;
+    }
+</style>
+
+<body>
+
+    <script>
+        // <!-- Javascript goes here --> 
+
+
+
+
+        /* document.getElementById("submit").type = "button";
+             document.getElementById("years").addEventListener("change", funktio);
+             function funktio(){
+                 if ((document.getElementById("years").value) == 3){
+                     document.getElementById("years").after("You get a 20% discount!");
+                 }
+             }
+             var dict = {"basic": 10.00, "premium": 15.00, "gold": 20.00, "platinum": 25.00};
+             document.getElementById("submit").onclick = function(){myFunction()};
+             function myFunction(){
+                 var member = dict[document.getElementById("type").value];
+                 var years = document.getElementById("years").value;
+                 var total = member * years;
+                 if (years >= 5){
+                     total = total - (total * 0.2) - 5;
+                     document.getElementById("cost").after("You also get 5€ off!");
+                 } else if (years > 2){
+                     total = total - (total * 0.2);
+                 }
+                 document.getElementById("cost").setAttribute("value", total);
+             } */
+
+    </script>
+
+
+
+    <h1>Workshop 5: Smart Forms</h1>
+    <hr />
+    <p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the
+        lecture-material as a reference guide side by side these exercises. It might also be a
+        good idea to save the lines of code you write during the exercises for later use. </p>
+
+
+    <h2>Exercise 2: Membership Calculator</h2>
+
+    <p data-line="16">Below there is a membership calculator form. It has 3 fields:
+        Membership Type (pulldown), Years (input) and Costs (input). User can use the
+        pulldown to select which plan user wants to choose (Basic = 10€, Premium=15€,
+        Gold=20€) and then enter the number of years he wants to pay for.</p>
+    <p data-line="20">Update the code of the form so that:</p>
+    <p data-line="20">a) the Costs-field should display the total costs of the
+        subscription</p>
+    <p data-line="22">b) If the user chooses to pay for more than 2 years, he will get a
+        20% discount. Notify the user when he is eligible to get the discount, by showing a text
+        next to form.</p>
+    <p data-line="24">c) Should he pay for 5 years or more, he will get the normal 20%
+        discount, but will also be given an extra 5€ discount with a special greetings text on
+        screen.</p>
+
+    <form action="" method="post" id="theForm">
+        <fieldset>
+            <legend>Create Your Membership</legend>
+            <p>Complete this form to calculate your membership. There's a 20% discount if
+                you enroll for more than one year!</p>
+            <div><label for="type">Type</label> <select name="type" id="type" required>
+                    <option value="basic">Basic - $10.00</option>
+                    <option value="premium">Premium - $15.00</option>
+                    <option value="gold">Gold - $20.00</option>
+                    <option value="platinum">Platinum - $25.00</option>
+                </select></div>
+            <div><label for="years">Years</label><input type="number" name="years" id="years" min="1" required></div>
+            <div><label for="cost">Cost</label><input type="text" name="cost" id="cost" disabled></div>
+            <input type="submit" value="Calculate" id="submit">
+        </fieldset>
+    </form>
+
+    <p data-line="20">&nbsp;</p>
+
+    <script>
+        /*    document.getElementById("submit").type = "button";
+                    document.getElementById("years").addEventListener("change", funktio);
+                    function funktio(){
+                        if ((document.getElementById("years").value) == 3){
+                            document.getElementById("years").after("You get a 20% discount!");
+                        }
+                    }
+                    var dict = {"basic": 10.00, "premium": 15.00, "gold": 20.00, "platinum": 25.00};
+                    document.getElementById("submit").onclick = function(){myFunction()};
+                    function myFunction(){
+                        var member = dict[document.getElementById("type").value];
+                        var years = document.getElementById("years").value;
+                        var total = member * years;
+                        if (years >= 5){
+                            total = total - (total * 0.2) - 5;
+                            document.getElementById("cost").after("You also get 5€ off!");
+                        } else if (years > 2){
+                            total = total - (total * 0.2);
+                        }
+                        document.getElementById("cost").setAttribute("value", total);
+                    } */
+
+
+
+
+
+
+
+        document.getElementById("submit").type = "button";
+        var button = document.getElementById("submit");
+        button.addEventListener("click", calc);
+
+        function calc() {
+            var type = document.getElementById("type").value;
+            if (type == "basic") {
+                var type = 10;
+            } else if (type == "premium") {
+                var type = 15;
+            } else if (type == "gold") {
+                var type = 20;
+            } else {
+                var type = 25;
+            }
+            var years = document.getElementById("years").value;
+
+            // calculate type and years
+            var total = years * type;
+            if (years < 3) {
+                document.getElementById("cost").setAttribute("value", total);
+            } else if (years > 2 && years < 5) {
+                var discount1 = total - (total * 0.2);
+                document.getElementById("cost").setAttribute("value", discount1);
+            } else {
+                var discount2 = total - (total * 0.2) - 5;
+                document.getElementById("cost").after("You also get 5€ off!");
+                document.getElementById("cost").setAttribute("value", discount2);
+            }
+        }
+
+    </script>
+
+
+
+
+</body>
+
+</html>
