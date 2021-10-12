@@ -1,0 +1,59 @@
+<HTML>
+    <style>
+      body {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        color: #333333;
+      }
+    
+      div {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+      }
+    
+      table,
+      tr,
+      td {
+        border: 1px solid gray;
+        width: 50%;
+      }
+    </style>
+    
+    <!-- This is for assignment 3 -->
+    
+    <h1>Workshop 5: Smart Forms</h1>
+    <hr />
+    <p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the
+      lecture-material as a reference guide side by side these exercises. It might also be a
+      good idea to save the lines of code you write during the exercises for later use. </p>
+
+    <p data-line="20">&nbsp;</p>
+    <h2>Exercise 3: Book Order</h2>
+    <p data-line="27">In many cases, developer has to maintain and develop code written
+      by someone else. Look at the HTML code and JavaScript code below. Study how does
+      it work and what is the logic behind it.</p>
+    <p data-line="29">Then add following features to the code:</p>
+    <p data-line="31">a) the values read from the text boxes are stored as strings. Modify
+      the code to store the quantity as an integer and the price, tax and discount as floats.
+    </p>
+    <p data-line="33">b) modify the JS code to double the discount applied when the
+      quantity ordered is greater than 100 items</p>
+    <p data-line="35">c) modify the HTML form to include a shipping field, and include this
+      value in the total calculation in shopping.js. Shipping costs are 10€. However shipping is
+      free if the total sum is more than 100€.</p>
+    <p>&nbsp;</p>
+    
+    <fieldset>
+      <p>Calculate a bulk book order.</p>
+      <div><label for="quantity">Quantity</label><input type="number" name="quantity" id="quantity" value="1" min="1"
+          required></div>
+      <div><label for="price">Price Per Unit</label><input type="text" name="price" id="price" value="1.00" required></div>
+      <div><label for="tax">VAT (%)</label><input type="number" name="tax" id="tax" value="0.0" min="0.0" max="100" required></div>
+      <div><label for="discount">Discount</label><input type="number" name="discount" id="discount" value="0.00" min="0" max="100" required></div>
+      <div><label for="shipping">Shipping</label><input type="text" name="shipping" id="shipping" value="10.0" disabled></div>
+      <div><label for="total">Total</label><input type="text" name="total" id="total" value="0.00" disabled></div>
+      <div><input type="submit" value="Calculate" id="submit" onClick="calculate()"></div>
+      
+    </fieldset>
+    <script src="shopping.js"></script>
+    </html>
