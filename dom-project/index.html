@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>TO-DO List</title>
+</head>
+
+<body>
+    <h1 class="otsikko">TO-DO List</h1>
+
+    <div class="text_field">
+        <input placeholder="Enter task" value="" type="text" name="to-do" id="lista" required>
+    </div>
+    <br>
+    <div class="buttons">
+    
+        <input type="submit" method="post" value="Add" id="submit" onclick="addToDo();">
+        <input type="submit" value="Delete" id="delete" onclick="deleteToDo();">
+    </div>
+    <div>
+        <ul id="myList" class="lista">
+        </ul>
+    </div>
+
+
+
+
+
+    <script>
+
+        // toDo funktio
+        function addToDo() {
+
+            var text = document.getElementById("lista").value;
+
+            var node = document.createElement("li");
+            var textnode = document.createTextNode(text);
+
+            node.appendChild(textnode);
+            document.getElementById("myList").appendChild(node);
+        }
+
+        function deleteToDo() {
+            var list = document.getElementById("myList");
+            list.removeChild(list.childNodes[0]);
+        }
+
+    </script>
+
+</body>
+
+</html>

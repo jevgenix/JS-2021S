@@ -1,0 +1,15 @@
+body {
+    background-color: #EBDEF0;
+}
+
+h1 {
+    margin-top: 20%;
+    text-align: center;
+}
+.text_field {
+    display: flex;
+    justify-content: center;
+}
+.buttons {
+    text-align: center;
+}
