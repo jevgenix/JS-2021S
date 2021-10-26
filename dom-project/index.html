@@ -11,42 +11,129 @@
 
 <body>
     <h1 class="otsikko">TO-DO List</h1>
-
-    <div class="text_field">
-        <input placeholder="Enter task" value="" type="text" name="to-do" id="lista" required>
+    <div class="form_container">
+        <form class="form">
+            <input placeholder="Enter task" value="" type="text" name="to-do" id="lista" autocomplete="off"
+                class="input" required>
+            <input type="submit" method="post" value="Add" id="submit" class="submit_btn" />
+            <div class="select">
+                <select class="todo-filtteri" id="select">
+                    <option value="All">All</option>
+                    <option value="Done">Done</option>
+                    <option value="Undone">Undone</option>
+                </select>
+        </form>
     </div>
-    <br>
-    <div class="buttons">
-    
-        <input type="submit" method="post" value="Add" id="submit" onclick="addToDo();">
-        <input type="submit" value="Delete" id="delete" onclick="deleteToDo();">
-    </div>
-    <div>
-        <ul id="myList" class="lista">
-        </ul>
-    </div>
+    <!--<input type="submit" value="Delete checked items!" id="delete" onclick="deleteToDo();" /> 
+    -->
 
+    <ul id="myList" class="todos">
 
-
-
+    </ul>
 
     <script>
+        // event listeners!
 
-        // toDo funktio
-        function addToDo() {
+        // variables
+        var submit = document.getElementById("submit");
+        var list = document.getElementById("myList");
+        var li = document.getElementsByTagName("li");
 
+        var todoFiltteri = document.querySelector('.todo-filtteri');
+        todoFiltteri.addEventListener('click', select);
+
+        // Luodaan addToDo funktio, jonka kutsutaan html:ssä onclick eventinä
+
+        submit.addEventListener("click", function (e) {
+
+            e.preventDefault();
+            // luodaan muuttujat
+
+            // haetaan input "lista":n arvo 
             var text = document.getElementById("lista").value;
 
+            // luodaan li-elementti
             var node = document.createElement("li");
+
+            // Luodaan tekstisolmu
             var textnode = document.createTextNode(text);
 
+            // Liitä teksti kohteeseen <li>
             node.appendChild(textnode);
+
+            // annetaan <li> tekstille luokkanimen 'item'
+            node.className = 'item';
+
+            // jos, muuten lausunto. Jos teksti kenttä on tyhjä: 
+            // varoitus + tyylin muutos.
+
+            if (text === '') {
+                alert("Fill the blank!");
+                document.getElementById("lista").style.borderColor = "red";
+                /*  return false käytän koska tiettyä merkintää ei ole täytetty 
+                    lomakkeen lähettämisen aikana, palautus epätosi estää lomakkeen lähettämistä. */
+                return false;
+            }
+
+            // Liitä <li> kohtaan <ul> komennolla id="myList"
             document.getElementById("myList").appendChild(node);
+            // palauta teksti-kenttä tyhjänä
+            document.getElementById('lista').value = "";
+            // palauta input reuna 
+            document.getElementById("lista").style.borderColor = "";
+
+            // luodaan span-elementti 
+            var span = document.createElement("span");
+            // elementin arvo on 'x'-merkki, muuttujan nimi on txt
+            var txt = document.createTextNode("\u00D7");
+            // luokan nimi 'close'
+            span.className = "close";
+            // elementtien liittäminen yhteen
+            span.appendChild(txt);
+            node.appendChild(span);
+
+            tallena();
+        });
+
+
+        addEventListener("click", function (ev) {
+            if (ev.target.tagName === "LI") {
+                ev.target.classList.toggle('checked');
+                console.log("moikka!");
+                tallena();
+            }
+        });
+
+        addEventListener("click", function (event) {
+            var close = document.getElementsByClassName('close');
+            var i = event.target;
+            console.log(i);
+            if (i.classList[0] === 'close') {
+                const todo = i.parentElement;
+                todo.remove();
+            }
+            tallena();
+        });
+
+        var information = localStorage.getItem("ToDO");
+        document.getElementById("myList").innerHTML = information;
+
+        function tallena() {
+            window.localStorage.ToDO = list.innerHTML;
         }
 
-        function deleteToDo() {
-            var list = document.getElementById("myList");
-            list.removeChild(list.childNodes[0]);
+        function select() {
+            
+            var select = document.getElementById("select").value
+            for (var i = 0; i < select.length; i++) {
+                if (select === "All") {
+                    console.log("Kaikki on valittu");
+                } else if (select === "Done") {
+                    console.log("Tehty on valittu");
+                } else if (select === "Undone") {
+                    console.log("Tekemättä on valittu");
+                }
+            }
         }
 
     </script>
