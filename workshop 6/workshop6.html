@@ -19,13 +19,58 @@ table, tr, td{
 
 <script>
 
+  // find the button
+  var btn = document.getElementById("button");
+  // add event listener to the button
+  btn.addEventListener('click', getData);
 
-}
+// funtion get data
+  function getData(event) {
+
+    // get data destination
+    const destination = document.getElementById("destination").value;
+    // get data Arrival
+    const arrivalDate = document.getElementById("arrival").value;
+    // get services selection value
+    var services = document.getElementById("services").innerHTML;
+    var selections = document.querySelectorAll('input[type=checkbox]:checked');
+
+    var extras = "";
+
+    for (var i = 0; i < selections.length; i++) {
+      console.log(selections[i].value);
+      extras += selections[i].value + " ";
+    }
+    
+    console.log(destination);
+    console.log(arrivalDate);
+
+  
+    if (destination != "" && arrivalDate != "") {
+      localStorage.setItem("Destination", destination + " ");
+      localStorage.setItem("Date", arrivalDate + " ");
+      localStorage.setItem("extras", extras);  
+      location.reload();
+    } else {
+      alert("You need to input data!");
+    }
+  }
+
+  function updateData() {
+    document.getElementById("sessiondata").innerHTML = localStorage.getItem("Destination");
+    document.getElementById("sessiondata").innerHTML += localStorage.getItem("Date");
+    document.getElementById("sessiondata").innerHTML += localStorage.getItem("extras");
+
+  }
+
+
+// values for local storage
+
 
 </script>
 <!-- exercise #2 -->
 
-<body onload="">
+<body onload="updateData();">
 
 <h1>Workshop 6: Using Localstorage</h1>
 <hr />
