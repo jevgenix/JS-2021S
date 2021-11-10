@@ -1,9 +1,10 @@
 <html>
 
 <head>
-	<link href="/learning/styles/default.css" rel="stylesheet" type="text/css" />
 	<style>
-		td, th {
+		table,
+		td,
+		tr {
 			border: 1px solid black;
 		}
 	</style>
@@ -43,7 +44,7 @@
 	<div>
 		<input id="Fetch" name="Fetch" type="button" value="Button" />
 	</div>
-	
+
 	<div id="quoteTable">
 
 	</div>
@@ -194,32 +195,106 @@
 	<script>
 		// first exercise =>
 		// here goes the code.
+
 		var firstBtn = document.getElementById("Fetch");
 
 		firstBtn.addEventListener("click", function () {
-			
+
 			// first quote
 			const firstQuote = document.getElementsByTagName('quote')[0].innerHTML;
 			const firstQuoteAuthor = document.getElementsByTagName('author')[0].innerHTML;
-			
+
 			// second quote
-			const secondQuote =  document.getElementsByTagName('quote')[1].innerHTML;
+			const secondQuote = document.getElementsByTagName('quote')[1].innerHTML;
 			const secondQuoteAuthor = document.getElementsByTagName('author')[1].innerHTML;
 
 			var txt = "<table>";
-				
-					txt += `<tr>
-							<td style>${firstQuote}<br><br>${firstQuoteAuthor}</td>	
+
+			txt += `<tr>
+							<td>${firstQuote}<br><br>${firstQuoteAuthor}</td>	
 						
 							<td>${secondQuote}<br><br>${secondQuoteAuthor}</td>
 							</tr>`;
-							// printing table into html file.
-							document.getElementById("quoteTable").style.border = "2px solid black";
-							document.getElementById("quoteTable").innerHTML = txt;
+			txt += "</table>";
+			// printing table into html file.
+			document.getElementById("quoteTable").style.border = "2px solid black";
+			document.getElementById("quoteTable").innerHTML = txt;
 		});
 
 		// SECOND EXERCISE
-		
+
+		var secondBtn = document.getElementById("Fetch2");
+
+		secondBtn.addEventListener("click", function () {
+			// xmlhttp ohject 
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET", "http://quotes.rest/qod.xml", true);
+			xmlhttp.send();
+
+			xmlhttp.onreadystatechange = function () {
+				if (xmlhttp.readyState == 1) {
+					document.getElementById("quotes").innerHTML = "Wait, the current statement is loading..."
+				}
+
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var xmlDoc = xmlhttp.responseText;
+					document.getElementById("quotes").innerHTML = xmlDoc;
+				}
+			}
+		});
+
+		// THIRD EXERCISE
+
+		var thirdBtn = document.getElementById("Fetch3");
+		thirdBtn.addEventListener("click", function () {
+
+			// find xml from third party server
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET", "http://quotes.rest/qod.xml", true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange = function () {
+				// if connection is fine and everything works
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					// Instead of just placing the RAW XML content we need to parse it
+
+					var xmlDoc = xmlhttp.responseXML;
+
+					// Once again we find some tags from our variable containing XML
+					//       var quotes = xmlDoc.getElementsByTagName("quote");
+					//       var authors = xmlDoc.getElementsByTagName("author");
+
+					var title = xmlDoc.getElementsByTagName("title")[0].innerHTML;
+					var quotes = xmlDoc.getElementsByTagName("quote")[0].innerHTML;
+					var authors = xmlDoc.getElementsByTagName("author")[0].innerHTML;
+					
+					console.log(title);
+					console.log(quotes);
+					console.log(authors);
+
+					// making a table
+					var txt = "<table style=width:100%>";
+
+					// for each quote
+					/*		for (i = 0; i <quotes.length; i++) {
+								txt += "<tr><td>" + quotes[i].childNodes[0].nodeValue + "</td>"+
+										"<td>" +authors[i].childNodes[0].nodeValue + "</td></tr>";
+								console.log(txt);
+							} */
+					
+						txt += `<tr>
+						<td>${title}</td>	
+						<td>${quotes}</td>
+						<td>${authors}</td>
+						</tr>`;
+
+					txt += "</table";
+					document.getElementById("tabledata").style.border = "2px solid black";
+					document.getElementById("tabledata").innerHTML = txt;
+				}
+			}
+
+		});
+
 	</script>
 
 
