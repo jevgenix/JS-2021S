@@ -186,8 +186,8 @@
 			<li><a href="#">News heading 3</a></li>
 		</ul>
 	</div>
-	<div><input id="Fetch3" name="Fetch3" type="button" value="Load YAHOO newsfeed" /></div>
-	<div><input id="Fetch3" name="Fetch3" type="button" value="Load Iltalehti Newsfeed" /></div>
+	<div><input id="Fetch4" name="Fetch4" type="button" value="Load YAHOO newsfeed" /></div>
+	<div><input id="Fetch5" name="Fetch5" type="button" value="Load Iltalehti Newsfeed" /></div>
 	<div>
 		<div id="newsfeed">&nbsp;</div>
 	</div>
@@ -266,7 +266,7 @@
 					var title = xmlDoc.getElementsByTagName("title")[0].innerHTML;
 					var quotes = xmlDoc.getElementsByTagName("quote")[0].innerHTML;
 					var authors = xmlDoc.getElementsByTagName("author")[0].innerHTML;
-					
+
 					console.log(title);
 					console.log(quotes);
 					console.log(authors);
@@ -280,8 +280,8 @@
 										"<td>" +authors[i].childNodes[0].nodeValue + "</td></tr>";
 								console.log(txt);
 							} */
-					
-						txt += `<tr>
+
+					txt += `<tr>
 						<td>${title}</td>	
 						<td>${quotes}</td>
 						<td>${authors}</td>
@@ -292,9 +292,59 @@
 					document.getElementById("tabledata").innerHTML = txt;
 				}
 			}
-
 		});
 
+		var yahooBtn = document.getElementById("Fetch4");
+		yahooBtn.addEventListener("click", function () {
+			console.log("Yahoo xml file not working... :(");
+		});
+
+
+
+
+
+		var ilBtn = document.getElementById("Fetch5");
+		ilBtn.addEventListener("click", function () {
+			//test for event listener
+			console.log("Iltalehti news!");
+			// making xmlhttp object
+			var xmlhttp = new XMLHttpRequest();
+			// getting data from webpage
+			xmlhttp.open("GET", "https://www.iltalehti.fi/rss/uutiset.xml", true);
+			//sending request for data
+			xmlhttp.send();
+			// making onreadystatechange function
+			xmlhttp.onreadystatechange = function () {
+				// if connection is OK
+				if (this.readyState == 4 && this.status == 200) {
+					// create needed variables
+					var item, feedlink, name, description, content = '';
+					// create xmlDOC variable, wich will get whole xml document value
+					var xmlDoc = xmlhttp.responseXML;
+					console.log(xmlDoc);
+					// searching for the tag named item un this document
+					items = xmlDoc.getElementsByTagName("item");
+					
+					// there are a lot of item tags in this doc, so he should make a for loop
+					// to loop throught all of them and find all the info we needed
+					for (i = 0; i < items.length; i++) {
+						// giving the feedlink value of the 'link' tag from items and also saving html code
+						feedlink = items[i].getElementsByTagName('link').item(0).firstChild.nodeValue;
+						//same here but for title
+						name = items[i].getElementsByTagName('title').item(0).firstChild.nodeValue;
+						// creating list with name
+						item = '<li>' + name + '</li>';
+						// adding a link to the list wich value of name
+						item = '<li><a href="' + feedlink + '">' + name + '</a></li>';
+						// adding it to the content 
+						content += item;
+					}
+					// Finally we place the contents in a div adding <ul>
+					document.getElementById("newsfeed").innerHTML = "<ul>" + content + "</ul>";
+				}
+			}
+
+		});
 	</script>
 
 
