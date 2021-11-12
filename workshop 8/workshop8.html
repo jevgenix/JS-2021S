@@ -49,7 +49,7 @@
       '{ "firstName":"John" , "lastName":"Doe" },' +
       '{ "firstName":"Anna" , "lastName":"Smith" },' +
       '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
-    
+
     var jsonObj = JSON.parse(text);
 
     var fName = jsonObj.employees[0].firstName;
@@ -383,16 +383,81 @@
 
   function loadJSONDoc() {
 
-    var url = "https://api.myjson.com/bins/18bfgz";
+    var url = "http://iceberg-cycle.codio.io/Project%202:%20Weather%20App/sampledata.js";
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log("Connection is successful");
+        jsonObj = JSON.parse(xmlhttp.responseText);
+        // lets try use it as variable
+        console.log(jsonObj[1].age);
+
+
+        document.getElementById("rawdata").innerHTML = xmlhttp.responseText;
+      }
+    }
 
   }
 
   function loadJSONDocWithParse() {
 
-    var url = "https://api.myjson.com/bins/18bfgz";
+    var url = "http://iceberg-cycle.codio.io/Project%202:%20Weather%20App/sampledata.js";
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log("Connection is successful");
+        jsonObj = JSON.parse(xmlhttp.responseText);
+        //console.log(jsonObj[0]);
+
+
+        var txt = "<table>";
+        var name = "First Name";
+        var lname = "Last Name";
+        var address = "Address";
+        var company = "Company";
+        var balance = "Balance";
+        txt += `<tr>
+              <th>${name}</th>
+              <th>${lname}</th>
+              <th>${address}</th>
+              <th>${company}</th>
+              <th>${balance}</th>
+                    </tr>`;
+
+        var info = jsonObj;
+        for (i = 0; i < info.length; i++) {
+
+          console.log(
+              info[i].name.first + " "
+            + info[i].name.last + " "
+            + info[i].address + " "
+            + info[i].company + " "
+            + info[i].balance);
+
+
+          txt += `
+            <tr>
+              <td>${info[i].name.first}</td>
+              <td>${info[i].name.last}</td>
+              <td>${info[i].address}</td>
+              <td>${info[i].company}</td>
+              <td>${info[i].balance}</td>
+            </tr>`;
+        }
+        txt += "</table";
+
+        document.getElementById("rawdata").innerHTML = txt;
+
+
+      }
+    }
   }
-
 
 
 </script>

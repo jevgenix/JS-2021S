@@ -431,10 +431,10 @@ function printJSONTable(jsonObj) {
     // for each loop round, we will create a new table for <tr> -tag and append (+=) the data to existing out -variable
         out += '<tr>';
         // For each cell, we will output data fields from JSON
-		out += '<td>' + data[i].name.first + '</td>';
-		out += '<td>' + data[i].name.last + '</td>';
-		out += '<td>' + data[i].eyeColor+ '</td>';
-		out += '<td>' + data[i].balance + '</td>';
+	  	  out += '<td>' + data[i].name.first + '</td>';
+		    out += '<td>' + data[i].name.last + '</td>';
+		    out += '<td>' + data[i].eyeColor+ '</td>';
+		    out += '<td>' + data[i].balance + '</td>';
         //out += '<td>' + data[i].picture + '</td>';
         out += '<td><img src="'+ data[i].picture+'"></td>';
         out += '</tr>';
